@@ -14,7 +14,9 @@ async def start(c: Client, m: Message):
 @app.on_message(filters.private)
 async def handle_album(c: Client, m: Message):
     photos = m.photo.file_id
-    await c.send_media_group(chat_id=m.chat.id, media=[InputMediaPhoto(photos) for photo in photos])
+    await c.send_media_group(
+        chat_id=m.chat.id, media=[InputMediaPhoto(photos) for _ in photos]
+    )
 
 
 app.run()
